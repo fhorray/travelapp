@@ -15,6 +15,7 @@ import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import CategoriesList from "../components/Categories";
 import React from "react";
 import Destinations from "../components/Destinations";
+import SortCategories from "../components/SortCategories";
 
 export default function HomeScreen() {
   const ios = Platform.OS === "ios";
@@ -55,6 +56,9 @@ export default function HomeScreen() {
 
         {/* Categories */}
         <CategoriesList />
+
+        {/* Sort Categories */}
+        <SortCategories />
 
         {/* Destinations */}
         <Destinations />
