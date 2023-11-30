@@ -13,7 +13,7 @@ export default function SortCategories() {
           : null;
 
         return (
-          <TouchableOpacity onPress={() => setActiveSort(sort)}>
+          <TouchableOpacity onPress={() => setActiveSort(sort)} key={index}>
             <Text className={`text-bold ${activeButtonClass}`}>{sort}</Text>
           </TouchableOpacity>
         );

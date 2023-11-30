@@ -1,3 +1,4 @@
+import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { destinationData } from "../constants/index";
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,24 +9,30 @@ import {
 } from "react-native-responsive-screen";
 import SortCategories from "./SortCategories";
 import { HeartIcon } from "react-native-heroicons/solid";
-import React from "react";
+
+import { useNavigation } from "@react-navigation/native";
 
 export default function Destinations() {
+  const navigation = useNavigation();
   return (
     <View className="mx-4 flex flex-row justify-between flex-wrap">
       {destinationData.map((item, index) => {
-        return <DestinationCard item={item} key={index} />;
+        return (
+          <DestinationCard item={item} navigation={navigation} key={index} />
+        );
       })}
     </View>
   );
 }
 
-const DestinationCard = ({ item }) => {
+const DestinationCard = ({ item, navigation }) => {
   const [isFavourite, toggleFavourite] = React.useState(false);
+
   return (
     <TouchableOpacity
       className="flex justify-end relative p-4 py-6 space-y-2 mb-5"
       style={{ width: wp(44), height: wp(65) }}
+      onPress={() => navigation.navigate("Destination", { ...item })}
     >
       {/* Destination Image */}
       <Image
